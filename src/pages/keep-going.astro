@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const images = [
+  '1.jpeg', '2.jpeg', '3.jpeg', '4.jpeg', '5.jpeg',
+  '6.jpeg', '7.jpeg', '8.jpeg', '9.jpeg', '10.jpeg',
+  '11.jpeg', '12.jpeg', '13.jpeg', '15.jpeg', '16.jpeg'
+];
+---
+
+<Layout title="Keep Going" description="A collection of motivational reminders to stay focused and never give up.">
+  <section class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-4">KEEP GOING</h1>
+      <p class="text-lg md:text-xl opacity-80 mb-12 max-w-2xl">
+        A collection of motivational reminders to stay focused and never give up.
+      </p>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {images.map((img, index) => (
+          <div
+            class="gallery-item border-2 border-[#FAFAF8] cursor-pointer overflow-hidden aspect-square"
+            data-index={index}
+          >
+            <img
+              src={`/keep-going/${img}`}
+              alt={`Keep Going ${index + 1}`}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="hidden fixed inset-0 bg-black/95 z-50 flex items-center justify-center">
+    <!-- Close Button -->
+    <button
+      id="lightbox-close"
+      class="absolute top-4 right-4 text-[#FAFAF8] text-2xl font-bold border-2 border-[#FAFAF8] w-12 h-12 flex items-center justify-center hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      aria-label="Close lightbox"
+    >
+      X
+    </button>
+
+    <!-- Previous Button -->
+    <button
+      id="lightbox-prev"
+      class="absolute left-4 top-1/2 -translate-y-1/2 text-[#FAFAF8] text-3xl font-bold border-2 border-[#FAFAF8] w-12 h-12 flex items-center justify-center hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      aria-label="Previous image"
+    >
+      &larr;
+    </button>
+
+    <!-- Image Container -->
+    <div class="max-w-4xl max-h-[80vh] mx-16">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-w-full max-h-[80vh] object-contain border-2 border-[#FAFAF8]"
+      />
+    </div>
+
+    <!-- Next Button -->
+    <button
+      id="lightbox-next"
+      class="absolute right-4 top-1/2 -translate-y-1/2 text-[#FAFAF8] text-3xl font-bold border-2 border-[#FAFAF8] w-12 h-12 flex items-center justify-center hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      aria-label="Next image"
+    >
+      &rarr;
+    </button>
+
+    <!-- Counter -->
+    <span
+      id="lightbox-counter"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#FAFAF8] text-lg font-bold border-2 border-[#FAFAF8] px-4 py-2"
+    >
+      1 / 15
+    </span>
+  </div>
+</Layout>
+
+<script define:vars={{ images }}>
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+
+  let currentIndex = 0;
+  const totalImages = images.length;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    updateLightbox();
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  function updateLightbox() {
+    lightboxImg.src = `/keep-going/${images[currentIndex]}`;
+    lightboxImg.alt = `Keep Going ${currentIndex + 1}`;
+    lightboxCounter.textContent = `${currentIndex + 1} / ${totalImages}`;
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    updateLightbox();
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateLightbox();
+  }
+
+  // Click handlers for gallery items
+  galleryItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      const index = parseInt(item.dataset.index, 10);
+      openLightbox(index);
+    });
+  });
+
+  // Lightbox controls
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', prevImage);
+  lightboxNext.addEventListener('click', nextImage);
+
+  // Click outside image to close
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+
+    switch (e.key) {
+      case 'Escape':
+        closeLightbox();
+        break;
+      case 'ArrowLeft':
+        prevImage();
+        break;
+      case 'ArrowRight':
+        nextImage();
+        break;
+    }
+  });
+</script>
+
+<style>
+  /* Remove gaps by using negative margins on borders */
+  .gallery-item {
+    margin: -1px;
+  }
+</style>

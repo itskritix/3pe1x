@@ -1,0 +1,100 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "3P1X - Kritix's corner of the internet." } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | 3P1X</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={`${title} | 3P1X`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="3P1X" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@itskritix" />
+    <meta name="twitter:title" content={`${title} | 3P1X`} />
+    <meta name="twitter:description" content={description} />
+    
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b-2 border-[#FAFAF8] bg-[#0A0A0A]">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="text-xl font-bold tracking-wider">
+          <span class="text-[#C45A3B]">3P1X</span>
+        </a>
+        <div class="hidden md:flex gap-8">
+          <a href="/" class="hover:text-[#C45A3B] transition-colors">HOME</a>
+          <a href="/about" class="hover:text-[#C45A3B] transition-colors">ABOUT</a>
+          <a href="/labs" class="hover:text-[#C45A3B] transition-colors">LABS</a>
+          <a href="/keep-going" class="hover:text-[#C45A3B] transition-colors">KEEP GOING</a>
+          <a href="/contact" class="hover:text-[#C45A3B] transition-colors">CONTACT</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button id="menu-btn" class="md:hidden border-2 border-[#FAFAF8] p-2">
+          <span class="block w-5 h-0.5 bg-[#FAFAF8] mb-1"></span>
+          <span class="block w-5 h-0.5 bg-[#FAFAF8] mb-1"></span>
+          <span class="block w-5 h-0.5 bg-[#FAFAF8]"></span>
+        </button>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden md:hidden border-t-2 border-[#FAFAF8]">
+        <div class="flex flex-col">
+          <a href="/" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">HOME</a>
+          <a href="/about" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">ABOUT</a>
+          <a href="/labs" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">LABS</a>
+          <a href="/keep-going" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">KEEP GOING</a>
+          <a href="/contact" class="px-6 py-3 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">CONTACT</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t-2 border-[#FAFAF8] mt-20">
+      <div class="max-w-6xl mx-auto px-6 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-sm opacity-60">
+            <span class="text-[#C45A3B]">3p1x.com</span> — kritix's corner of the internet
+          </p>
+          <div class="flex gap-6 text-sm">
+            <a href="https://x.com/itskritix" target="_blank" rel="noopener noreferrer" class="hover:text-[#C45A3B]">TWITTER</a>
+            <a href="https://github.com/itskritix" target="_blank" rel="noopener noreferrer" class="hover:text-[#C45A3B]">GITHUB</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>

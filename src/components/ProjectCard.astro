@@ -1,0 +1,81 @@
+---
+interface Props {
+  name: string;
+  tech: string[];
+  description?: string;
+  url: string;
+  type?: string;
+  stars?: number;
+  featured?: boolean;
+  image?: string;
+}
+
+const { name, tech, description, url, type, stars, featured = false, image } = Astro.props;
+
+// Determine badge color based on type (with group-hover for visibility on white bg)
+const getBadgeClass = () => {
+  switch(type) {
+    case 'private': return 'bg-[#C45A3B] text-[#FAFAF8]';
+    case 'opensource': return 'bg-[#FAFAF8] text-[#0A0A0A] group-hover:bg-[#0A0A0A] group-hover:text-[#FAFAF8]';
+    case 'fork': return 'bg-transparent border-2 border-[#FAFAF8] text-[#FAFAF8] group-hover:border-[#0A0A0A] group-hover:text-[#0A0A0A]';
+    default: return 'bg-[#FAFAF8] text-[#0A0A0A] group-hover:bg-[#0A0A0A] group-hover:text-[#FAFAF8]';
+  }
+};
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "project-card block border-2 border-[#FAFAF8] hover:bg-[#FAFAF8] transition-colors group",
+    featured ? "col-span-1 md:col-span-2" : ""
+  ]}
+  data-type={type}
+>
+  {/* Image for featured projects */}
+  {featured && image && (
+    <div class="aspect-video overflow-hidden border-b-2 border-[#FAFAF8]">
+      <img
+        src={image}
+        alt={name}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  )}
+
+  <div class="p-6">
+    <div class="flex justify-between items-start mb-4">
+      <h3 class="text-xl font-bold uppercase tracking-wide group-hover:text-[#0A0A0A]">{name}</h3>
+      <div class="flex items-center gap-2">
+        {stars !== undefined && stars > 0 && (
+          <span class="text-sm opacity-60 group-hover:opacity-100 group-hover:text-[#0A0A0A]">
+            {stars}
+          </span>
+        )}
+        {type && (
+          <span class:list={["text-xs px-2 py-1 uppercase font-bold transition-colors", getBadgeClass()]}>
+            {type === 'opensource' ? 'OSS' : type === 'fork' ? 'FORK' : type.toUpperCase()}
+          </span>
+        )}
+      </div>
+    </div>
+
+    {description && (
+      <p class="text-sm opacity-80 mb-4 group-hover:opacity-100 group-hover:text-[#0A0A0A]">{description}</p>
+    )}
+
+    <div class="flex flex-wrap gap-2">
+      {tech.map((t) => (
+        <span class="text-xs border border-[#FAFAF8] px-2 py-1 group-hover:border-[#0A0A0A] group-hover:text-[#0A0A0A] transition-colors">
+          {t}
+        </span>
+      ))}
+    </div>
+
+    <div class="mt-4 flex items-center gap-2 text-xs opacity-60 group-hover:opacity-100 group-hover:text-[#0A0A0A]">
+      <span class="uppercase">VIEW PROJECT</span>
+      <span>-></span>
+    </div>
+  </div>
+</a>

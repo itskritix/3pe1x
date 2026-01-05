@@ -1,0 +1,191 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import projects from '../data/projects.json';
+
+// Combine all projects with their types
+const allProjects = [
+  ...projects.featured.map(p => ({ ...p, featured: true })),
+  ...projects.opensource.map(p => ({ ...p, type: 'opensource' })),
+  ...projects.forks.map(p => ({ ...p, type: 'fork' }))
+];
+---
+
+<Layout title="LABS" description="Things I'm building, experiments I'm running, and code I've shipped.">
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <div class="mb-12">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        MY <span class="text-[#C45A3B]">EXPERIMENTS</span>
+      </h1>
+      <p class="text-lg opacity-80 max-w-2xl">
+        things i've built, stuff i'm working on, and code i've shipped. 
+        some worked, some didn't. all taught me something.
+      </p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap gap-2 mb-8 border-b-2 border-[#FAFAF8] pb-8">
+      <button
+        data-filter="all"
+        class="filter-btn active px-4 py-2 border-2 border-[#FAFAF8] uppercase font-bold text-sm hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      >
+        ALL
+      </button>
+      <button
+        data-filter="opensource"
+        class="filter-btn px-4 py-2 border-2 border-[#FAFAF8] uppercase font-bold text-sm hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      >
+        OPEN SOURCE
+      </button>
+      <button
+        data-filter="private"
+        class="filter-btn px-4 py-2 border-2 border-[#FAFAF8] uppercase font-bold text-sm hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      >
+        PRIVATE
+      </button>
+      <button
+        data-filter="fork"
+        class="filter-btn px-4 py-2 border-2 border-[#FAFAF8] uppercase font-bold text-sm hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors"
+      >
+        FORKS
+      </button>
+    </div>
+
+    <!-- Main Project -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 uppercase tracking-wider border-l-4 border-[#C45A3B] pl-4">
+        THE BIG ONE
+      </h2>
+      <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {projects.featured.map((project) => (
+          <ProjectCard
+            name={project.name}
+            tech={project.tech}
+            description={project.description}
+            url={project.url}
+            type={project.type}
+            stars={project.stars}
+            featured={true}
+            image={project.image}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- All Projects Grid -->
+    <div>
+      <h2 class="text-2xl font-bold mb-6 uppercase tracking-wider border-l-4 border-[#C45A3B] pl-4">
+        OTHER STUFF
+      </h2>
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {projects.opensource.map((project) => (
+          <ProjectCard
+            name={project.name}
+            tech={project.tech}
+            description={project.description}
+            url={project.url}
+            type="opensource"
+            stars={project.stars}
+          />
+        ))}
+        {projects.forks.map((project) => (
+          <ProjectCard
+            name={project.name}
+            tech={project.tech}
+            description={project.description}
+            url={project.url}
+            type="fork"
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 border-2 border-[#FAFAF8] mt-8">
+      <p class="text-lg opacity-60 uppercase">NOTHING HERE YET</p>
+    </div>
+
+    <!-- Note -->
+    <div class="mt-16 border-2 border-[#FAFAF8] p-6">
+      <p class="text-sm opacity-80">
+        <span class="text-[#C45A3B] font-bold">NOTE:</span> most of these are experiments and side projects. 
+        some are abandoned, some are in progress. that's the nature of building — 
+        you try stuff, learn, and move on. the ones that stick, you keep going.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const featuredSection = document.querySelector('#featured-grid')?.parentElement;
+    const allProjectsSection = document.querySelector('#projects-grid')?.parentElement;
+    const emptyState = document.getElementById('empty-state');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active', 'bg-[#FAFAF8]', 'text-[#0A0A0A]'));
+        btn.classList.add('active', 'bg-[#FAFAF8]', 'text-[#0A0A0A]');
+
+        const filter = btn.getAttribute('data-filter');
+        let visibleCount = 0;
+
+        // Handle featured section visibility
+        if (featuredSection) {
+          if (filter === 'all' || filter === 'private' || filter === 'opensource') {
+            featuredSection.classList.remove('hidden');
+          } else {
+            featuredSection.classList.add('hidden');
+          }
+        }
+
+        // Filter project cards
+        projectCards.forEach(card => {
+          const cardType = card.getAttribute('data-type');
+
+          if (filter === 'all') {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else if (cardType === filter) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Handle all projects section visibility for fork filter
+        if (allProjectsSection) {
+          const visibleInAllProjects = allProjectsSection.querySelectorAll('.project-card:not(.hidden)');
+          if (visibleInAllProjects.length === 0 && filter !== 'private') {
+            allProjectsSection.classList.add('hidden');
+          } else {
+            allProjectsSection.classList.remove('hidden');
+          }
+        }
+
+        // Show empty state if needed
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    // Set initial active state styling
+    document.querySelector('.filter-btn.active')?.classList.add('bg-[#FAFAF8]', 'text-[#0A0A0A]');
+  </script>
+
+  <style>
+    .filter-btn.active {
+      background-color: #FAFAF8;
+      color: #0A0A0A;
+    }
+  </style>
+</Layout>

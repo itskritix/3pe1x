@@ -1,0 +1,35 @@
+{
+  "featured": [
+    {
+      "name": "BrainBox",
+      "type": "private",
+      "tech": ["TypeScript", "React", "Fastify", "PostgreSQL"],
+      "description": "my first real SaaS. a notion+slack alternative for small teams who are tired of juggling 10 different tools.",
+      "url": "https://brainbox.sh",
+      "image": "/brainbox.png",
+      "stars": 0
+    },
+    {
+      "name": "TypeCount",
+      "type": "opensource",
+      "tech": ["Electron", "TypeScript", "Vite", "Chart.js"],
+      "description": "a desktop app that tracks your keystrokes. built it to see how much i actually type in a day.",
+      "url": "https://github.com/itskritix/TypeCount",
+      "image": "/typecount.png",
+      "stars": 0
+    }
+  ],
+  "opensource": [
+    {"name": "wisper", "tech": ["Python"], "description": "whisper-based transcription tool", "url": "https://github.com/itskritix/wisper"},
+    {"name": "assetpipe", "tech": ["Astro"], "description": "asset pipeline tool", "url": "https://github.com/itskritix/assetpipe"},
+    {"name": "nanochat", "tech": ["Python"], "description": "the best ChatGPT that $100 can buy", "url": "https://github.com/itskritix/nanochat"},
+    {"name": "Forum-indieGamies", "tech": ["JavaScript"], "description": "game developer forum", "url": "https://github.com/itskritix/Forum-indieGamies", "stars": 2},
+    {"name": "Tenzies", "tech": ["JavaScript"], "description": "dice game", "url": "https://github.com/itskritix/Tenzies"}
+  ],
+  "forks": [
+    {"name": "OpenDeepWiki", "tech": ["C#"], "url": "https://github.com/itskritix/OpenDeepWiki"},
+    {"name": "web-interface-guidelines", "tech": [], "url": "https://github.com/itskritix/web-interface-guidelines"},
+    {"name": "awesome-chatgpt-prompts", "tech": ["JavaScript"], "url": "https://github.com/itskritix/awesome-chatgpt-prompts"},
+    {"name": "githubchart-api", "tech": ["Ruby"], "url": "https://github.com/itskritix/githubchart-api"}
+  ]
+}

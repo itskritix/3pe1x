@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="HOME" description="3P1X - Kritix's corner of the internet. Aspiring solo founder, builder, gamer.">
+  <!-- Hero Section with Background Image -->
+  <section class="min-h-[90vh] flex items-center border-b-2 border-[#FAFAF8] relative overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        src="/hero-bg.jpg"
+        alt=""
+        class="w-full h-full object-cover opacity-40"
+      />
+      <!-- Gradient Overlay for text readability -->
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
+      <p class="text-lg mb-4 text-[#FAFAF8]/60">welcome to</p>
+      <h1 class="text-6xl md:text-8xl font-bold leading-none mb-2">
+        <span class="text-[#C45A3B]">3P1X</span>
+      </h1>
+      <p class="text-xl md:text-2xl mb-8 text-[#FAFAF8]/60">
+        my corner of the internet
+      </p>
+
+      <div class="max-w-2xl mb-8 space-y-4">
+        <p class="text-xl md:text-2xl">
+          i'm <span class="text-[#C45A3B]">kritix</span> — aspiring solo founder. 
+          haven't made it yet, but i'm building my way there.
+        </p>
+      </div>
+
+      <div class="max-w-2xl mb-12 space-y-4">
+        <p class="text-lg leading-relaxed text-[#FAFAF8]/80">
+          i code. i game. i listen to way too much music. 
+          currently building <span class="text-[#C45A3B]">BrainBox</span> — 
+          a notion+slack alternative that doesn't make your head hurt.
+        </p>
+        <p class="text-lg leading-relaxed text-[#FAFAF8]/60">
+          just me, my code, and a dream.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-4">
+        <a href="/labs" class="btn-brutal">
+          SEE WHAT I'M BUILDING
+        </a>
+        <a href="/about" class="btn-brutal border-[#C45A3B] text-[#C45A3B] hover:bg-[#C45A3B] hover:text-[#0A0A0A]">
+          MORE ABOUT ME
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Currently Section -->
+  <section class="py-20 border-b-2 border-[#FAFAF8]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-bold mb-8 text-[#FAFAF8]/60">RIGHT NOW I'M...</h2>
+
+      <div class="grid md:grid-cols-2 gap-0">
+        <div class="border-2 border-[#FAFAF8] p-8 md:border-r-0">
+          <div class="text-[#C45A3B] text-sm mb-2">BUILDING</div>
+          <h3 class="text-xl font-bold mb-2">BRAINBOX</h3>
+          <p class="opacity-80 text-sm">
+            my first real SaaS. a workspace for small teams (5-10 people) 
+            who are tired of juggling notion, slack, and 10 other tools.
+          </p>
+        </div>
+
+        <div class="border-2 border-[#FAFAF8] p-8 border-t-0 md:border-t-2">
+          <div class="text-[#C45A3B] text-sm mb-2">WORKING AT</div>
+          <h3 class="text-xl font-bold mb-2">NIDANA</h3>
+          <p class="opacity-80 text-sm">
+            founding engineer. building veterinary practice management software. 
+            pays the bills while i chase the dream.
+          </p>
+        </div>
+
+        <div class="border-2 border-[#FAFAF8] p-8 border-t-0 md:border-r-0">
+          <div class="text-[#C45A3B] text-sm mb-2">STUDYING</div>
+          <h3 class="text-xl font-bold mb-2">MACHINE LEARNING</h3>
+          <p class="opacity-80 text-sm">
+            got an exam on jan 12. currently procrastinating by building this site. 
+            classic.
+          </p>
+        </div>
+
+        <div class="border-2 border-[#FAFAF8] p-8 border-t-0">
+          <div class="text-[#C45A3B] text-sm mb-2">PLAYING</div>
+          <h3 class="text-xl font-bold mb-2">GAMES</h3>
+          <p class="opacity-80 text-sm">
+            COC, League, Mobile Legends, Township, Kingsroth... 
+            gaming is how i started with computers. still hooked.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Dream Section -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">THE DREAM</h2>
+      <div class="max-w-2xl space-y-4">
+        <p class="text-lg leading-relaxed">
+          be a solo entrepreneur. run multiple companies. 
+          travel the world. live life on my own terms.
+        </p>
+        <p class="text-lg leading-relaxed text-[#FAFAF8]/70">
+          i'm nowhere close yet. but every line of code, every failed experiment, 
+          every late night — it's all part of getting there.
+        </p>
+        <p class="text-lg leading-relaxed">
+          this is <span class="text-[#C45A3B]">3p1x</span> — my experiments, my thoughts, my journey. 
+          welcome to my version of "making it".
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
