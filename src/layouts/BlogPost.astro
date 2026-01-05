@@ -1,0 +1,169 @@
+---
+import Layout from './Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, readingTime } = post.data;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Layout title={title} description={description} image={heroImage}>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <!-- Header -->
+    <header class="mb-12">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag) => (
+          <span class="text-xs border-2 border-[#C45A3B] text-[#C45A3B] px-2 py-1 uppercase tracking-wider">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-bold uppercase tracking-wider mb-4">
+        {title}
+      </h1>
+
+      <p class="text-lg opacity-80 mb-6">{description}</p>
+
+      <div class="flex flex-wrap gap-4 text-sm opacity-60 uppercase tracking-wider">
+        <time datetime={pubDate.toISOString()}>
+          {formattedDate}
+        </time>
+        {readingTime && (
+          <>
+            <span>//</span>
+            <span>{readingTime}</span>
+          </>
+        )}
+        {updatedDate && (
+          <>
+            <span>//</span>
+            <span>Updated: {formattedUpdatedDate}</span>
+          </>
+        )}
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    {heroImage && (
+      <div class="border-2 border-[#FAFAF8] mb-12">
+        <img src={heroImage} alt={title} class="w-full" />
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="prose prose-invert prose-lg max-w-none">
+      <slot />
+    </div>
+
+    <!-- Back Link -->
+    <div class="mt-16 pt-8 border-t-2 border-[#FAFAF8]">
+      <a href="/blog" class="inline-block border-2 border-[#FAFAF8] px-6 py-3 hover:bg-[#FAFAF8] hover:text-[#0A0A0A] transition-colors uppercase tracking-wider text-sm">
+        &larr; Back to Blog
+      </a>
+    </div>
+  </article>
+</Layout>
+
+<style is:global>
+  .prose {
+    color: #FAFAF8;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #C45A3B;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose p {
+    margin-bottom: 1.25rem;
+    line-height: 1.8;
+  }
+
+  .prose a {
+    color: #C45A3B;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .prose a:hover {
+    text-decoration: none;
+  }
+
+  .prose code {
+    background: rgba(250, 250, 248, 0.1);
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9em;
+  }
+
+  .prose pre {
+    background: rgba(250, 250, 248, 0.05);
+    border: 2px solid #FAFAF8;
+    padding: 1.5rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .prose pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .prose ul, .prose ol {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose blockquote {
+    border-left: 4px solid #C45A3B;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    opacity: 0.9;
+  }
+
+  .prose img {
+    border: 2px solid #FAFAF8;
+    margin: 1.5rem 0;
+  }
+
+  .prose hr {
+    border: none;
+    border-top: 2px solid #FAFAF8;
+    margin: 2rem 0;
+  }
+</style>

@@ -2,9 +2,18 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description = "3P1X - Kritix's corner of the internet." } = Astro.props;
+const {
+  title,
+  description = "3P1X - Kritix's corner of the internet.",
+  image = "/og-image.svg"
+} = Astro.props;
+
+const siteUrl = Astro.site || new URL('https://3p1x.com');
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const ogImageUrl = new URL(image, siteUrl);
 ---
 
 <!DOCTYPE html>
@@ -14,19 +23,31 @@ const { title, description = "3P1X - Kritix's corner of the internet." } = Astro
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} | 3P1X</title>
     <meta name="description" content={description} />
-    
+    <meta name="author" content="Kritix" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <link rel="canonical" href={canonicalUrl} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={`${title} | 3P1X`} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="3P1X" />
-    
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="3P1X - Kritix's corner of the internet" />
+    <meta property="og:locale" content="en_US" />
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@itskritix" />
+    <meta name="twitter:creator" content="@itskritix" />
     <meta name="twitter:title" content={`${title} | 3P1X`} />
     <meta name="twitter:description" content={description} />
-    
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="3P1X - Kritix's corner of the internet" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,6 +66,7 @@ const { title, description = "3P1X - Kritix's corner of the internet." } = Astro
         <div class="hidden md:flex gap-8">
           <a href="/" class="hover:text-[#C45A3B] transition-colors">HOME</a>
           <a href="/about" class="hover:text-[#C45A3B] transition-colors">ABOUT</a>
+          <a href="/blog" class="hover:text-[#C45A3B] transition-colors">BLOG</a>
           <a href="/labs" class="hover:text-[#C45A3B] transition-colors">LABS</a>
           <a href="/keep-going" class="hover:text-[#C45A3B] transition-colors">KEEP GOING</a>
           <a href="/contact" class="hover:text-[#C45A3B] transition-colors">CONTACT</a>
@@ -61,6 +83,7 @@ const { title, description = "3P1X - Kritix's corner of the internet." } = Astro
         <div class="flex flex-col">
           <a href="/" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">HOME</a>
           <a href="/about" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">ABOUT</a>
+          <a href="/blog" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">BLOG</a>
           <a href="/labs" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">LABS</a>
           <a href="/keep-going" class="px-6 py-3 border-b border-[#FAFAF8]/20 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">KEEP GOING</a>
           <a href="/contact" class="px-6 py-3 hover:bg-[#FAFAF8] hover:text-[#0A0A0A]">CONTACT</a>

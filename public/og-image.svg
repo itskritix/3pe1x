@@ -1,0 +1,42 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;display=swap');
+      .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <!-- Border frame -->
+  <rect x="20" y="20" width="1160" height="590" fill="none" stroke="#FAFAF8" stroke-width="3"/>
+
+  <!-- Accent corner blocks -->
+  <rect x="20" y="20" width="80" height="80" fill="#C45A3B"/>
+  <rect x="1100" y="530" width="80" height="80" fill="#C45A3B"/>
+
+  <!-- Main title -->
+  <text x="600" y="260" text-anchor="middle" class="mono" fill="#FAFAF8" font-size="140" font-weight="700" letter-spacing="20">3P1X</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="340" text-anchor="middle" class="mono" fill="#FAFAF8" font-size="28" font-weight="400" letter-spacing="8" opacity="0.8">KRITIX'S CORNER OF THE INTERNET</text>
+
+  <!-- Decorative line -->
+  <line x1="300" y1="390" x2="900" y2="390" stroke="#C45A3B" stroke-width="3"/>
+
+  <!-- Tagline -->
+  <text x="600" y="450" text-anchor="middle" class="mono" fill="#FAFAF8" font-size="22" font-weight="400" letter-spacing="4" opacity="0.6">BUILDER // GAMER // SOLO FOUNDER</text>
+
+  <!-- Grid pattern decoration -->
+  <g opacity="0.1" stroke="#FAFAF8" stroke-width="1">
+    <line x1="200" y1="20" x2="200" y2="610"/>
+    <line x1="400" y1="20" x2="400" y2="610"/>
+    <line x1="600" y1="20" x2="600" y2="610"/>
+    <line x1="800" y1="20" x2="800" y2="610"/>
+    <line x1="1000" y1="20" x2="1000" y2="610"/>
+  </g>
+
+  <!-- URL at bottom -->
+  <text x="600" y="560" text-anchor="middle" class="mono" fill="#C45A3B" font-size="24" font-weight="700" letter-spacing="6">3P1X.COM</text>
+</svg>
