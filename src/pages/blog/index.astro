@@ -10,15 +10,33 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   title="BLOG"
   description="Thoughts on code, building products, and the journey of a solo founder."
 >
-  <section class="max-w-4xl mx-auto px-6 py-16">
-    <!-- Header -->
-    <header class="mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold uppercase tracking-wider mb-4">
+  <!-- Hero Header with Background -->
+  <section class="relative border-b-2 border-[#FAFAF8] overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/blog-bg.jpg"
+        alt=""
+        class="w-full h-full object-cover opacity-30"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-4xl mx-auto px-6 py-20">
+      <h1 class="text-4xl md:text-6xl font-bold uppercase tracking-wider mb-4">
         <span class="text-[#C45A3B]">BLOG</span>
       </h1>
-      <p class="text-lg opacity-80 max-w-2xl">
+      <p class="text-lg md:text-xl opacity-80 max-w-2xl">
         Thoughts on code, building products, and the journey of a solo founder.
       </p>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <!-- Posts Header -->
+    <header class="mb-8">
+      <p class="text-sm uppercase tracking-wider opacity-60">ALL POSTS</p>
     </header>
 
     <!-- Posts List -->
