@@ -1,7 +1,7 @@
-# 3P1X LABS - Master Task
+# 3PE1X LABS - Master Task
 
 ## Overview
-Build 3P1X LABS - a brutalist portfolio website for Ganesh Dole (@itskritix).
+Build 3PE1X LABS - a brutalist portfolio website for Ganesh Dole (@itskritix).
 
 ## Modular Prompts (for parallel RALPH loops)
 
@@ -58,7 +58,7 @@ If you prefer a single RALPH loop that does everything:
 
 ## Full Task (for single RALPH loop)
 
-Build **3P1X LABS** with these requirements:
+Build **3PE1X LABS** with these requirements:
 
 ### Tech Stack
 - Astro (use `npm create astro@latest`)
@@ -74,7 +74,7 @@ Build **3P1X LABS** with these requirements:
 - Colors: #0A0A0A / #FAFAF8 / #C45A3B
 
 ### Pages
-1. Home - "3P1X LABS" hero
+1. Home - "3PE1X LABS" hero
 2. About - Bio, skills, experience, GitHub activity
 3. Labs - Project cards with filtering
 4. Keep Going - Image gallery with lightbox

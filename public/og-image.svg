@@ -17,7 +17,7 @@
   <rect x="1100" y="530" width="80" height="80" fill="#C45A3B"/>
 
   <!-- Main title -->
-  <text x="600" y="260" text-anchor="middle" class="mono" fill="#FAFAF8" font-size="140" font-weight="700" letter-spacing="20">3P1X</text>
+  <text x="600" y="260" text-anchor="middle" class="mono" fill="#FAFAF8" font-size="140" font-weight="700" letter-spacing="20">3PE1X</text>
 
   <!-- Subtitle -->
   <text x="600" y="340" text-anchor="middle" class="mono" fill="#FAFAF8" font-size="28" font-weight="400" letter-spacing="8" opacity="0.8">KRITIX'S CORNER OF THE INTERNET</text>
@@ -38,5 +38,5 @@
   </g>
 
   <!-- URL at bottom -->
-  <text x="600" y="560" text-anchor="middle" class="mono" fill="#C45A3B" font-size="24" font-weight="700" letter-spacing="6">3P1X.COM</text>
+  <text x="600" y="560" text-anchor="middle" class="mono" fill="#C45A3B" font-size="24" font-weight="700" letter-spacing="6">3PE1X.COM</text>
 </svg>
