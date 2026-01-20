@@ -20,8 +20,11 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
       <p class="text-lg mb-4 text-[#FAFAF8]/60">welcome to</p>
       <h1 class="text-6xl md:text-8xl font-bold leading-none mb-2">
-        <span class="text-[#C45A3B]">3PE1X</span>
+        <span id="logo-easter-egg" class="text-[#C45A3B] cursor-pointer select-none transition-all duration-300 hover:drop-shadow-[0_0_25px_rgba(196,90,59,0.8)]">3PE1X</span>
       </h1>
+      <p id="easter-egg-text" class="text-sm md:text-base tracking-widest uppercase overflow-hidden font-mono transition-all duration-500 h-0 opacity-0">
+        <span id="decode-text"></span>
+      </p>
       <p class="text-xl md:text-2xl mb-8 text-[#FAFAF8]/60">
         my corner of the internet
       </p>
@@ -120,4 +123,95 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </section>
+
+  <script>
+    const logo = document.getElementById('logo-easter-egg');
+    const decodeText = document.getElementById('decode-text');
+    const container = document.getElementById('easter-egg-text');
+    const finalText = "Three-Pronged Exploration Into eXistential Queries";
+    const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let isAnimating = false;
+    let revealed = false;
+
+    function scrambleReveal() {
+      if (isAnimating) return;
+      isAnimating = true;
+      revealed = !revealed;
+
+      if (!revealed) {
+        // Collapse and fade out
+        if (container && decodeText) {
+          container.style.height = '0';
+          container.style.opacity = '0';
+          container.style.marginBottom = '0';
+          setTimeout(() => {
+            decodeText.textContent = '';
+            isAnimating = false;
+          }, 500);
+        }
+        return;
+      }
+
+      // Expand container
+      if (container) {
+        container.style.height = '1.5rem';
+        container.style.opacity = '1';
+        container.style.marginBottom = '0.5rem';
+      }
+
+      // Glow effect on logo
+      if (logo) {
+        logo.style.filter = 'drop-shadow(0 0 30px rgba(196, 90, 59, 1))';
+        logo.style.textShadow = '0 0 40px rgba(196, 90, 59, 0.8)';
+        setTimeout(() => {
+          logo.style.filter = '';
+          logo.style.textShadow = '';
+        }, 1500);
+      }
+
+      let iteration = 0;
+      const totalIterations = finalText.length * 3;
+
+      if (decodeText) {
+        decodeText.style.opacity = '1';
+        decodeText.style.color = 'rgba(196, 90, 59, 0.6)';
+      }
+
+      const interval = setInterval(() => {
+        if (!decodeText) return;
+
+        const progress = Math.min(iteration / 2, finalText.length);
+        let display = '';
+
+        for (let i = 0; i < finalText.length; i++) {
+          if (finalText[i] === ' ') {
+            display += ' ';
+          } else if (i < progress) {
+            display += finalText[i];
+          } else if (i < progress + 8) {
+            display += chars[Math.floor(Math.random() * chars.length)];
+          } else {
+            display += ' ';
+          }
+        }
+
+        decodeText.textContent = display;
+
+        // Gradually brighten the color
+        const brightness = Math.min(0.4 + (iteration / totalIterations) * 0.6, 1);
+        decodeText.style.color = `rgba(250, 250, 248, ${brightness * 0.5})`;
+
+        iteration++;
+
+        if (iteration > totalIterations) {
+          clearInterval(interval);
+          decodeText.textContent = finalText;
+          decodeText.style.color = 'rgba(250, 250, 248, 0.4)';
+          isAnimating = false;
+        }
+      }, 30);
+    }
+
+    logo?.addEventListener('click', scrambleReveal);
+  </script>
 </Layout>

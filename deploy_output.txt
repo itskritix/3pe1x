@@ -1,0 +1,79 @@
+﻿node.exe : Vercel CLI 50.1.3
+At C:\Users\Kritix\AppData\Roaming\npm\vercel.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/vercel/dist/vc.js" $args
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Vercel CLI 50.1.3:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Retrieving projectΓÇª
+Deploying itskritix/3pe1x
+Uploading [--------------------] (0.0B/7.8KB)
+Uploading [====================] (7.8KB/7.8KB)
+Inspect: https://vercel.com/itskritix/3pe1x/EvnMQtn9qwwXY1NTxAJfJPdu6cPn [2s]
+Production: https://3pe1x-afxuith6x-itskritix.vercel.app [2s]
+Building...
+Building...
+Building: Running build in Washington, D.C., USA (East) ΓÇô iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Downloading 110 deployment files...
+Building: Restored build cache from previous deployment (EPHdAMnmqSXYdbcsdecg2TTE6nXv)
+Building: Running "vercel build"
+Building: Vercel CLI 50.4.6
+Building: Installing dependencies...
+Building: up to date in 1s
+Building: 156 packages are looking for funding
+Building: run `npm fund` for details
+Building: Running "npm run build"
+Building: > 3pe1x-app@0.0.1 build
+Building: > astro build
+Building: 14:47:18 [content] Syncing content
+Building: 14:47:18 [content] Synced content
+Building: 14:47:18 [types] Generated 541ms
+Building: 14:47:18 [build] output: "static"
+Building: 14:47:18 [build] mode: "static"
+Building: 14:47:18 [build] directory: /vercel/path0/dist/
+Building: 14:47:18 [build] Collecting build info...
+Building: 14:47:18 [build] Γ£ô Completed in 563ms.
+Building: 14:47:18 [build] Building static entrypoints...
+Building: 14:47:20 [WARN] [vite] "matchHostname", "matchPathname", "matchPort" and "matchProtocol" are imported from 
+external module "@astrojs/internal-helpers/remote" but never used in 
+"node_modules/astro/dist/assets/utils/remotePattern.js".
+Building: 14:47:20 [vite] Γ£ô built in 1.70s
+Building: 14:47:20 [build] Γ£ô Completed in 1.75s.
+Building: building client (vite)
+Building: 14:47:20 [vite] transforming...
+Building: 14:47:20 [vite] Γ£ô 3 modules transformed.
+Building: 14:47:20 [vite] rendering chunks...
+Building: 14:47:20 [vite] Γ£ô built in 48ms
+Building: generating static routes
+Building: 14:47:20 Γû╢ src/pages/about.astro
+Building: 14:47:20   ΓööΓöÇ /about/index.html (+7ms)
+Building: 14:47:20 Γû╢ src/pages/blog/index.astro
+Building: 14:47:20   ΓööΓöÇ /blog/index.html (+9ms)
+Building: 14:47:20 Γû╢ src/pages/blog/[...slug].astro
+Building: 14:47:20   Γö£ΓöÇ /blog/jvm-architecture/index.html (+4ms)
+Building: 14:47:20   Γö£ΓöÇ /blog/backup-before-wipe/index.html (+4ms)
+Building: 14:47:20   Γö£ΓöÇ /blog/java-packages/index.html (+3ms)
+Building: 14:47:20   ΓööΓöÇ /blog/java-inheritance-guide/index.html (+2ms)
+Building: 14:47:20 Γû╢ src/pages/contact.astro
+Building: 14:47:20   ΓööΓöÇ /contact/index.html (+6ms)
+Building: 14:47:20 Γû╢ src/pages/keep-going.astro
+Building: 14:47:20   ΓööΓöÇ /keep-going/index.html (+3ms)
+Building: 14:47:20 Γû╢ src/pages/labs.astro
+Building: 14:47:20   ΓööΓöÇ /labs/index.html (+5ms)
+Building: 14:47:20 Γû╢ src/pages/index.astro
+Building: 14:47:20   ΓööΓöÇ /index.html (+3ms)
+Building: 14:47:20 Γ£ô Completed in 93ms.
+Building: 14:47:20 [build] 10 page(s) built in 2.47s
+Building: 14:47:20 [build] Complete!
+Building: Build Completed in /vercel/output [6s]
+Building: Deploying outputs...
+[2K[1A[2K[GProduction: https://3pe1x-afxuith6x-itskritix.vercel.app [14s]
+Completing...
+Aliased: https://www.3pe1x.com [14s]
+
+Common next commands:
+- `vercel inspect 3pe1x-afxuith6x-itskritix.vercel.app --logs`
+- `vercel redeploy 3pe1x-afxuith6x-itskritix.vercel.app`
+https://3pe1x-afxuith6x-itskritix.vercel.app

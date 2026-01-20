@@ -38,6 +38,56 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## 🚀 Deployment
+
+This project is deployed on [Vercel](https://vercel.com).
+
+**Live Site:** https://www.3pe1x.com
+
+### Prerequisites
+
+1. Install the Vercel CLI:
+   ```sh
+   npm install -g vercel
+   ```
+
+2. Login to Vercel:
+   ```sh
+   vercel login
+   ```
+
+### Deploy to Production
+
+Run the following command from the project root:
+
+```sh
+vercel --prod
+```
+
+This will:
+- Build the Astro project
+- Upload the static files to Vercel
+- Deploy to production
+
+### Deploy Preview
+
+For a preview deployment (staging):
+
+```sh
+vercel
+```
+
+### Environment Variables
+
+No environment variables are required for this static site.
+
+### Build Settings (Auto-detected)
+
+Vercel automatically detects the Astro framework and uses:
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
+- **Install Command:** `npm install`
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
