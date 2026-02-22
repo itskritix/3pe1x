@@ -4,6 +4,7 @@ description: "I ran my own AI slop checklist against my published blogs and foun
 pubDate: 2026-02-22
 tags: ["AI", "Claude Code", "Writing", "BuildInPublic"]
 readingTime: "7 min read"
+heroImage: "/blog/i-audited-my-ai-blogs-they-were-awful-cover.png"
 draft: false
 ---
 
