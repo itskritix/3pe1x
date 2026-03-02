@@ -4,6 +4,7 @@ description: "How I built a full image vision pipeline for my WhatsApp and Teleg
 pubDate: 2026-03-01
 tags: ["AI", "Claude Code", "WhatsApp", "Telegram", "BuildInPublic"]
 readingTime: "8 min read"
+heroImage: "/blog/i-taught-my-ai-agent-to-see-images-cover.png"
 draft: false
 ---
 
