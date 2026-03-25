@@ -1,6 +1,24 @@
 {
   "featured": [
     {
+      "name": "Aanvi",
+      "type": "private",
+      "tech": ["React Native", "TypeScript", "Next.js", "Firebase"],
+      "description": "a baby memory journal and milestone tracker. CDC-based developmental tracking, family sharing, photos, videos, quotes — all in one app.",
+      "url": "https://aanvi.app",
+      "image": "/aanvi.png",
+      "stars": 0
+    },
+    {
+      "name": "NanoClaw",
+      "type": "private",
+      "tech": ["Node.js", "TypeScript", "Claude SDK", "SQLite"],
+      "description": "a personal AI assistant that connects to WhatsApp and Telegram. routes messages to Claude, runs scheduled tasks, manages per-group memory.",
+      "url": "https://github.com/AKShaw/nanoclaw",
+      "image": "/nanoclaw.png",
+      "stars": 0
+    },
+    {
       "name": "BrainBox",
       "type": "private",
       "tech": ["TypeScript", "React", "Fastify", "PostgreSQL"],
